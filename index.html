@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>XiaoYang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="XiaoYang">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="XiaoYang">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="逍洋">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="XiaoYang" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -46,8 +46,10 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">逍洋</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">Java</p>
 		
 
 		<nav class="header-menu">
@@ -63,10 +65,6 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -104,8 +102,10 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">逍洋</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Java<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -152,31 +152,118 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ActivedMQ的简单应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/24/%E6%B5%8B%E8%AF%95/">测试</a>
+      <a class="article-title" href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">ActivedMQ的简单应用</a>
     </h1>
   
 
         
-        <a href="/2020/06/24/%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2020-06-24T08:57:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
+        <a href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-06-24T09:53:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###第一章</p>
+        <h1 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h1><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><blockquote>
+<p>消息队列是在消息的传播过程中保存消息的容器<br/><br><br/><br/>　<br>消息队列中间件是分布式系统中的重要组件,主要解决异步消息,应用解耦,流量削峰等问题,从而实现高性能,高可用,可伸缩和最终一致性的架构</p>
+</blockquote>
+<ul>
+<li>异步请求</li>
+<li>应用解耦</li>
+<li>流量削峰</li>
+</ul>
 <hr>
-<p>###第二章</p>
-<p>内容</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+<blockquote>
+<p>Docker环境搭建</p>
+</blockquote>
+<p>通过Docker文件进行创建生成镜像文件<br/></p>
+<pre><code>docker build -t activemq/home/kds/dockermv/activeMQ5.15.2/</code></pre><p>创建容器<br/></p>
+<pre><code>docker run -it -d -p 8161:8161 -p 61616:61616 --name activemq activemq
+
+
+8161:HTTP协议
+61616:TCP协议</code></pre><hr>
+<h3 id="ActiveMQ的简单应用"><a href="#ActiveMQ的简单应用" class="headerlink" title="ActiveMQ的简单应用"></a>ActiveMQ的简单应用</h3><p>1.创建发送者produce</p>
+<p>2.导入SpringBoot整合ActiveMQ依赖</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-activemq&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre><p>3.向yml文件中添加属性</p>
+<pre><code>spring:
+    activemq:
+        broker-url: tcp://192.168.71.131:61616
+        in-memory: true
+        pool:
+            enabled: false
+        packages:
+            trust-all: true</code></pre><p>4.创建controller</p>
+<pre><code>@Resource
+private JmsMessagingTemplate jmsMessagingTemplatel;
+
+
+@RequestMapping(&quot;/send&quot;)
+public String send(String message){
+    //创建队列的名称
+    Queue queue = new ActiveMQQueue(&quot;消息队列1&quot;);
+    //将消息发送到服务器中
+    jmsMessagingTemplatel.convertAndSend(queue,message);
+    return &quot;发送成功&quot;;
+}</code></pre><p>5.启动类添加注解,运行访问</p>
+<pre><code>@EnableJms</code></pre><p>6.创建消费者Consumer,修改yml文件</p>
+<pre><code>spring:
+    activemq:
+        broker-url: tcp://192.168.71.131:61616
+        in-memory: true
+        pool:
+            enabled: false
+        packages:
+            trust-all: true
+server:
+    port: 6666</code></pre><p>7.添加测试类</p>
+<pre><code>@Component
+public class Test {
+
+    @JmsListener(destination = &quot;消息队列2&quot;)
+    public void getMessage(String message){
+        System.out.println(message);
+
+    }
+
+}</code></pre><p>8.启动类添加注解,启动</p>
+<pre><code>@EnableJms</code></pre><hr>
+<h3 id="ActiveMQ参数信息"><a href="#ActiveMQ参数信息" class="headerlink" title="ActiveMQ参数信息"></a>ActiveMQ参数信息</h3><ul>
+<li>Number Of Pending Messages     等待处理的消息有多少条</li>
+<li>Number Of Consumers    有多少个消费者去处理消息</li>
+<li>Messages Enqueued    进入队列的中的消息有多少条</li>
+<li>Messages Dequeued    已处理的消息有多少条</li>
+</ul>
+<hr>
+<h4 id="JMS消息模型P2P-Point-to-Point-点对点模式"><a href="#JMS消息模型P2P-Point-to-Point-点对点模式" class="headerlink" title="JMS消息模型P2P(Point to Point)点对点模式"></a>JMS消息模型P2P(Point to Point)点对点模式</h4><p>P2P模式包含三个角色:<br/><br>   &nbsp; &nbsp;&nbsp;  消息队列(Queue),发送者(Sender),接收者(Receiver)</p>
+<pre><code>Queue queue = new ActiveMQQueue(&quot;消息队列1&quot;);</code></pre><ul>
+<li>每个消息只有一个消费者(Consumer)</li>
+<li>发送者和接收者之间在时间上没有依赖性,也就是说当发送者发送了消息之后,不管接收者有没有正在运行,它不会影响到消息被发送到队列</li>
+<li>接收者在成功接收消息之后需要想队列应答成功</li>
+</ul>
+<hr>
+<h4 id="Publish-Subscribe-Pub-Sub-发布订阅模式"><a href="#Publish-Subscribe-Pub-Sub-发布订阅模式" class="headerlink" title="Publish/Subscribe(Pub/Sub)发布订阅模式"></a>Publish/Subscribe(Pub/Sub)发布订阅模式</h4><p>Pbu/Sub模式包含三个角色:<br/><br>    &nbsp; &nbsp;&nbsp;<br>    主题(Topic),发布者(Publisher),订阅者(Receiver)</p>
+<pre><code>Topic topic = new ActiveMQTopic(&quot;订阅队列&quot;);
+
+//配置消息中间件的模式  false 点对点模式   true 发布订阅模式
+//发布者消费者需要配置
+jms: 
+    pub-sub-domain: true</code></pre><ul>
+<li>每个消息可以有多个消费者</li>
+<li>发布者和订阅者之间有时间上的依赖性.针对某个主题的订阅者,他必须创建一个订阅之后,才能消费发布者的消息</li>
+<li>为了消费消息,订阅者必须保持运行的状态</li>
+</ul>
 
       
 
@@ -189,82 +276,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/24/%E6%B5%8B%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/24/hello-world/" class="archive-article-date">
-  	<time datetime="2020-06-24T08:54:38.464Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/24/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -304,7 +316,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 John Doe
+    		&copy; 2020 逍洋
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -348,25 +360,17 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -429,38 +433,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
