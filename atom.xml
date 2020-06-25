@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xiao ocean</title>
+  
+  <subtitle>每天进步,每天进步</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-06-25T03:41:38.961Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Xiao ocean</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ELK+Kafka</title>
+    <link href="http://yoursite.com/2020/06/25/ELK-Kafka/"/>
+    <id>http://yoursite.com/2020/06/25/ELK-Kafka/</id>
+    <published>2020-06-25T03:40:03.000Z</published>
+    <updated>2020-06-25T03:41:38.961Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;ELK-Kafka&quot;&gt;&lt;a href=&quot;#ELK-Kafka&quot; class=&quot;headerlink&quot; title=&quot;ELK+Kafka&quot;&gt;&lt;/a&gt;ELK+Kafka&lt;/h1&gt;&lt;h3 id=&quot;利用ELK-Kafka解决方案，搭建企业级实时日志分析平台&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ActivedMQ的简单应用</title>
+    <link href="http://yoursite.com/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/</id>
+    <published>2020-06-24T09:53:51.000Z</published>
+    <updated>2020-06-24T09:54:20.112Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;ActiveMQ&quot;&gt;&lt;a href=&quot;#ActiveMQ&quot; class=&quot;headerlink&quot; title=&quot;ActiveMQ&quot;&gt;&lt;/a&gt;ActiveMQ&lt;/h1&gt;&lt;h3 id=&quot;应用场景&quot;&gt;&lt;a href=&quot;#应用场景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
