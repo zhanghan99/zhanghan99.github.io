@@ -16,7 +16,7 @@
 <meta property="og:description" content="ELK+Kafka利用ELK+Kafka解决方案，搭建企业级实时日志分析平台 ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。   准备DockerFile文件1.修改ElasticS">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-25T03:40:03.000Z">
-<meta property="article:modified_time" content="2020-06-26T10:25:29.557Z">
+<meta property="article:modified_time" content="2020-06-26T10:30:14.720Z">
 <meta property="article:author" content="Xiao ocean">
 <meta name="twitter:card" content="summary">
   
@@ -199,7 +199,7 @@
 <pre><code>    //创建镜像
     docker build -t logstash /home/kds/dockermv/Logstash/
     //创建容器
-    docker run -it -d -p logstash logstash</code></pre><hr>
+    docker run -it -d logstash logstash</code></pre><hr>
 <h3 id="ElasticSearch启动不成功"><a href="#ElasticSearch启动不成功" class="headerlink" title="ElasticSearch启动不成功"></a>ElasticSearch启动不成功</h3><ul>
 <li><p>先限制性</p>
 <pre><code>  sysctl -w vm.max_map_count=262144</code></pre></li>
