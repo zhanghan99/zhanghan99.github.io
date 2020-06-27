@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>&#39;SpringBoot&#39;</title>
+      <link href="/2020/06/27/SpringBoot/"/>
+      <url>/2020/06/27/SpringBoot/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><h2 id="SpringBoot概述"><a href="#SpringBoot概述" class="headerlink" title="SpringBoot概述"></a>SpringBoot概述</h2><h4 id="什么是SpringBoot"><a href="#什么是SpringBoot" class="headerlink" title="什么是SpringBoot"></a>什么是SpringBoot</h4><p>谈到SpringBoot，首先谈一下Spring。Spring框架为Java应用程序开发提供全面基础架构支持的框架，<br>它简化了大量的重复代码的操作，比如数据库连接，让我们的开发时间大大缩短。它的主要模块如下 :</p><pre><code>    Spring JDBC：简化JDBC编码，使代码更加健壮    Spring MVC：提供对Web程序的支持    Spring Security：提供对安全访问控制的支持 shiro    Spring AOP：基础IOC/DI，提供面向切面编程的实现    Spring ORM：提供对当前市面上流行的ORM框架的支持    Spring Test：提供对单元测试、集成测试等的支持</code></pre><p>随着动态语言的流行（Ruby、Node.js），java开发显得格外笨重，繁多的配置、低下的开发效率、复<br>杂的部署流程以及第三方技术集成的难度大。<br>在上述情况下，SpringBoot应运而生，它使用“习惯优于配置”，使我们不用或很少的配置。</p><hr><h2 id="SpringBoot核心功能"><a href="#SpringBoot核心功能" class="headerlink" title="SpringBoot核心功能"></a>SpringBoot核心功能</h2><p>1.内嵌的Servlet容器</p><p> &nbsp;&nbsp;&nbsp;&nbsp;SpringBoot可以内嵌Tomcat、Jetty等，这样我们无需以war形式部署项目</p><p>2.提供starer简化Maven配置</p><p>&nbsp;&nbsp;&nbsp;&nbsp; Spring提供了一系列的starer pom 来简化Maven的依赖加载，常用starer依赖：</p><pre><code>    spring-boot-starter-data-jpa    spring-boot-starter-security    spring-boot-starter-test    spring-boot-starter-web    spring-boot-starter-thymeleaf</code></pre><hr><h2 id="SpringBoot项目快速搭建"><a href="#SpringBoot项目快速搭建" class="headerlink" title="SpringBoot项目快速搭建"></a>SpringBoot项目快速搭建</h2><p>1.网站搭建</p><p>&nbsp;&nbsp;<a href="https://start.spring.io/" target="_blank" rel="noopener">浏览器访问</a>，填写Group、artifact、dependencies，点击创建按钮。</p><p><img src="/2020/06/27/SpringBoot/springboot.png" alt="springboot"></p><p>2.使用Spring Tool Suite(STS)<br>即eclipse工具安装SpringBoot插件，创建项目</p><p>3.使用Intellij IDEA工具创建项目<br>第二和第三种创建方式，本质还是访问<a href="https://start.spring.io/创建项目，所以需要有网络" target="_blank" rel="noopener">https://start.spring.io/创建项目，所以需要有网络</a></p><hr><h2 id="SpringBoot基本配置"><a href="#SpringBoot基本配置" class="headerlink" title="SpringBoot基本配置"></a>SpringBoot基本配置</h2><h4 id="SpringBoot的配置文件"><a href="#SpringBoot的配置文件" class="headerlink" title="SpringBoot的配置文件"></a>SpringBoot的配置文件</h4><blockquote><p>全局配置文件：application.properties或application.yml</p></blockquote><pre><code>    常用简单配置：        server.port= 8080        server.context-path= /helloboot        自定义属性配置：        属性定义            book.author= xm            book.name= SpringBoot        属性使用            @Value(“${book.author}”)            String bookAuthor;            @Value(“${book.name}”)            String bookName;</code></pre><h2 id="SpringBoot的常用注解"><a href="#SpringBoot的常用注解" class="headerlink" title="SpringBoot的常用注解"></a>SpringBoot的常用注解</h2><pre><code>类注解    @RestController，等同于@Controller + @responseBodyurl注解    @RequestMapping参数注解    @GetMapping组合注解（get请求方式的RequestMapping）    @PostMapping组合注解（post请求方式的RequestMapping）    @PathVariable 获取url中的数据    @RequestParam 获取参数中的数据</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ELK+Kafka</title>
       <link href="/2020/06/25/ELK-Kafka/"/>
       <url>/2020/06/25/ELK-Kafka/</url>
