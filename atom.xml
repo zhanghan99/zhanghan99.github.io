@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-27T12:12:38.369Z</updated>
+  <updated>2020-06-27T12:36:09.602Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,18 @@
     <link href="http://yoursite.com/2020/06/27/SpringBoot/"/>
     <id>http://yoursite.com/2020/06/27/SpringBoot/</id>
     <published>2020-06-27T12:06:13.000Z</published>
-    <updated>2020-06-27T12:12:38.369Z</updated>
+    <updated>2020-06-27T12:36:09.602Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;SpringBoot&quot;&gt;&lt;a href=&quot;#SpringBoot&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot&quot;&gt;&lt;/a&gt;SpringBoot&lt;/h1&gt;&lt;h2 id=&quot;SpringBoot概述&quot;&gt;&lt;a
-        
-      
+      &lt;h1 id=&quot;SpringBoot&quot;&gt;&lt;a href=&quot;#SpringBoot&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot&quot;&gt;&lt;/a&gt;SpringBoot&lt;/h1&gt;&lt;h2 id=&quot;SpringBoot概述&quot;&gt;&lt;a href=&quot;#SpringBoot概述&quot; class=&quot;headerlink&quot; title=&quot;SpringBoot概述&quot;&gt;&lt;/a&gt;SpringBoot概述&lt;/h2&gt;&lt;h4 id=&quot;什么是SpringBoot&quot;&gt;&lt;a href=&quot;#什么是SpringBoot&quot; class=&quot;headerlink&quot; title=&quot;什么是SpringBoot&quot;&gt;&lt;/a&gt;什么是SpringBoot&lt;/h4&gt;&lt;p&gt;谈到SpringBoot，首先谈一下Spring。Spring框架为Java应用程序开发提供全面基础架构支持的框架，&lt;br&gt;它简化了大量的重复代码的操作，比如数据库连接，让我们的开发时间大大缩短。它的主要模块如下 :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    Spring JDBC：简化JDBC编码，使代码更加健壮
+    Spring MVC：提供对Web程序的支持
+    Spring Security：提供对安全访问控制的支持 shiro
+    Spring AOP：基础IOC/DI，提供面向切面编程的实现
+    Spring ORM：提供对当前市面上流行的ORM框架的支持
+    Spring Test：提供对单元测试、集成测试等的支持&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;随着动态语言的流行（Ruby、Node.js），java开发显得格外笨重，繁多的配置、低下的开发效率、复&lt;br&gt;杂的部署流程以及第三方技术集成的难度大。&lt;br&gt;在上述情况下，SpringBoot应运而生，它使用“习惯优于配置”，使我们不用或很少的配置。&lt;/p&gt;
+&lt;hr&gt;
     
     </summary>
     
@@ -44,17 +45,17 @@
     <link href="http://yoursite.com/2020/06/25/ELK-Kafka/"/>
     <id>http://yoursite.com/2020/06/25/ELK-Kafka/</id>
     <published>2020-06-25T03:40:03.000Z</published>
-    <updated>2020-06-26T10:30:14.720Z</updated>
+    <updated>2020-06-27T12:36:37.533Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;ELK-Kafka&quot;&gt;&lt;a href=&quot;#ELK-Kafka&quot; class=&quot;headerlink&quot; title=&quot;ELK+Kafka&quot;&gt;&lt;/a&gt;ELK+Kafka&lt;/h1&gt;&lt;h3 id=&quot;利用ELK-Kafka解决方案，搭建企业级实时日志分析平台&quot;&gt;&lt;a
-        
-      
+      &lt;h1 id=&quot;ELK-Kafka&quot;&gt;&lt;a href=&quot;#ELK-Kafka&quot; class=&quot;headerlink&quot; title=&quot;ELK+Kafka&quot;&gt;&lt;/a&gt;ELK+Kafka&lt;/h1&gt;&lt;h3 id=&quot;利用ELK-Kafka解决方案，搭建企业级实时日志分析平台&quot;&gt;&lt;a href=&quot;#利用ELK-Kafka解决方案，搭建企业级实时日志分析平台&quot; class=&quot;headerlink&quot; title=&quot;利用ELK+Kafka解决方案，搭建企业级实时日志分析平台&quot;&gt;&lt;/a&gt;利用ELK+Kafka解决方案，搭建企业级实时日志分析平台&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;准备DockerFile文件&quot;&gt;&lt;a href=&quot;#准备DockerFile文件&quot; class=&quot;headerlink&quot; title=&quot;准备DockerFile文件&quot;&gt;&lt;/a&gt;准备DockerFile文件&lt;/h4&gt;&lt;p&gt;1.修改ElasticSearch的DockerFile依赖的JDK镜像名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    FROM jdk镜像名&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.修改Kafka的DockerFile依赖的JDK镜像名,倒数第二行添加&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    FROM jdk镜像名&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -67,17 +68,30 @@
     <link href="http://yoursite.com/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/"/>
     <id>http://yoursite.com/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/</id>
     <published>2020-06-24T09:53:51.000Z</published>
-    <updated>2020-06-25T10:03:52.504Z</updated>
+    <updated>2020-06-27T12:36:46.960Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;ActiveMQ&quot;&gt;&lt;a href=&quot;#ActiveMQ&quot; class=&quot;headerlink&quot; title=&quot;ActiveMQ&quot;&gt;&lt;/a&gt;ActiveMQ&lt;/h1&gt;&lt;h3 id=&quot;应用场景&quot;&gt;&lt;a href=&quot;#应用场景&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;ActiveMQ&quot;&gt;&lt;a href=&quot;#ActiveMQ&quot; class=&quot;headerlink&quot; title=&quot;ActiveMQ&quot;&gt;&lt;/a&gt;ActiveMQ&lt;/h1&gt;&lt;h3 id=&quot;应用场景&quot;&gt;&lt;a href=&quot;#应用场景&quot; class=&quot;headerlink&quot; title=&quot;应用场景&quot;&gt;&lt;/a&gt;应用场景&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;消息队列是在消息的传播过程中保存消息的容器&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;　&lt;br&gt;消息队列中间件是分布式系统中的重要组件,主要解决异步消息,应用解耦,流量削峰等问题,从而实现高性能,高可用,可伸缩和最终一致性的架构&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;异步请求&lt;/li&gt;
+&lt;li&gt;应用解耦&lt;/li&gt;
+&lt;li&gt;流量削峰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Docker环境搭建&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通过Docker文件进行创建生成镜像文件&lt;br&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker build -t activemq/home/kds/dockermv/activeMQ5.15.2/&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建容器&lt;br&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it -d -p 8161:8161 -p 61616:61616 --name activemq activemq
+
+
+8161:HTTP协议
+61616:TCP协议&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h3 id=&quot;ActiveMQ的简单应用&quot;&gt;&lt;a href=&quot;#ActiveMQ的简单应用&quot; class=&quot;headerlink&quot; title=&quot;ActiveMQ的简单应用&quot;&gt;&lt;/a&gt;ActiveMQ的简单应用&lt;/h3&gt;
     
     </summary>
     
