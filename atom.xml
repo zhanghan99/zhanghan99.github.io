@@ -45,7 +45,7 @@
     <link href="http://yoursite.com/2020/06/25/ELK-Kafka/"/>
     <id>http://yoursite.com/2020/06/25/ELK-Kafka/</id>
     <published>2020-06-25T03:40:03.000Z</published>
-    <updated>2020-06-27T12:36:37.533Z</updated>
+    <updated>2020-07-01T03:22:42.324Z</updated>
     
     <summary type="html">
     
@@ -53,9 +53,6 @@
 &lt;p&gt;ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h4 id=&quot;准备DockerFile文件&quot;&gt;&lt;a href=&quot;#准备DockerFile文件&quot; class=&quot;headerlink&quot; title=&quot;准备DockerFile文件&quot;&gt;&lt;/a&gt;准备DockerFile文件&lt;/h4&gt;&lt;p&gt;1.修改ElasticSearch的DockerFile依赖的JDK镜像名&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    FROM jdk镜像名&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.修改Kafka的DockerFile依赖的JDK镜像名,倒数第二行添加&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    FROM jdk镜像名&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -68,7 +65,7 @@
     <link href="http://yoursite.com/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/"/>
     <id>http://yoursite.com/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/</id>
     <published>2020-06-24T09:53:51.000Z</published>
-    <updated>2020-06-27T12:36:46.960Z</updated>
+    <updated>2020-07-01T03:22:56.134Z</updated>
     
     <summary type="html">
     
@@ -81,17 +78,6 @@
 &lt;li&gt;流量削峰&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Docker环境搭建&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;通过Docker文件进行创建生成镜像文件&lt;br&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker build -t activemq/home/kds/dockermv/activeMQ5.15.2/&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建容器&lt;br&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker run -it -d -p 8161:8161 -p 61616:61616 --name activemq activemq
-
-
-8161:HTTP协议
-61616:TCP协议&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h3 id=&quot;ActiveMQ的简单应用&quot;&gt;&lt;a href=&quot;#ActiveMQ的简单应用&quot; class=&quot;headerlink&quot; title=&quot;ActiveMQ的简单应用&quot;&gt;&lt;/a&gt;ActiveMQ的简单应用&lt;/h3&gt;
     
     </summary>
     

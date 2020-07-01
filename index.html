@@ -243,9 +243,6 @@
 <p>ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。</p>
 </blockquote>
 <hr>
-<h4 id="准备DockerFile文件"><a href="#准备DockerFile文件" class="headerlink" title="准备DockerFile文件"></a>准备DockerFile文件</h4><p>1.修改ElasticSearch的DockerFile依赖的JDK镜像名</p>
-<pre><code>    FROM jdk镜像名</code></pre><p>2.修改Kafka的DockerFile依赖的JDK镜像名,倒数第二行添加</p>
-<pre><code>    FROM jdk镜像名</code></pre>
         
           <a class="article-more-a" href="/2020/06/25/ELK-Kafka/#more">more >></a>
         
@@ -319,17 +316,6 @@
 <li>流量削峰</li>
 </ul>
 <hr>
-<blockquote>
-<p>Docker环境搭建</p>
-</blockquote>
-<p>通过Docker文件进行创建生成镜像文件<br></p>
-<pre><code>docker build -t activemq/home/kds/dockermv/activeMQ5.15.2/</code></pre><p>创建容器<br></p>
-<pre><code>docker run -it -d -p 8161:8161 -p 61616:61616 --name activemq activemq
-
-
-8161:HTTP协议
-61616:TCP协议</code></pre><hr>
-<h3 id="ActiveMQ的简单应用"><a href="#ActiveMQ的简单应用" class="headerlink" title="ActiveMQ的简单应用"></a>ActiveMQ的简单应用</h3>
         
           <a class="article-more-a" href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/#more">more >></a>
         
