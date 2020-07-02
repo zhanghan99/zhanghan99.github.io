@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Linux安装Docker</title>
+      <link href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/"/>
+      <url>/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Linux配置Docker"><a href="#Linux配置Docker" class="headerlink" title="Linux配置Docker"></a>Linux配置Docker</h1><p>1.切换到root用户,更新软件安装源,安装完成重启虚拟机</p><pre><code>yum update</code></pre><p>2.查看自带的JAVA,删除自带的JDK</p><pre><code>rpm -qa|grep java yum remove</code></pre><a id="more"></a><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>1.关闭,禁用防火墙</p><pre><code>systemctl stop firewalldsystemctl disable firewalld</code></pre><p>2.移除自带的docker</p><pre><code>yum -y remove docker-common container-selinux</code></pre><p>3.更新yum源</p><pre><code>yum install -y yum-utils</code></pre><p>4.配置docker安装源的路径</p><pre><code>yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre><p>5.设置缓冲区</p><pre><code>yum makecache fast</code></pre><p>6.安装</p><pre><code>yum -y install docker-ce</code></pre><p>7.安装完成查看版本</p><pre><code>docker version</code></pre><p>  出现</p><p>  <img src="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/wenti.jpg" alt="wenti"></p><p>  执行</p><pre><code>systemctl daemon-reloadsystemctl restart docker.service</code></pre><h4 id="创建Docker可视化容器"><a href="#创建Docker可视化容器" class="headerlink" title="创建Docker可视化容器"></a>创建Docker可视化容器</h4><p>1.拉取镜像</p><pre><code>docker pull portainer/portainer</code></pre><p>2.创建挂载卷</p><pre><code>docker volume create portainer_data</code></pre><p>3.创建容器</p><pre><code>docker run -it -d -p 9010:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data --restart=always --name portainer portainer/portainer</code></pre><h4 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h4><blockquote><p>在/home/ /创建一个文件夹放dockerFile文件</p></blockquote><p>1.拉取底层镜像centos:7.2.1511</p><pre><code>docker pull centos:7.2.1511</code></pre><p>2.dockerFile安装centos-ssh镜像<br>    centos-ssh文件上传到服务器安装</p><pre><code>docker bulid -t centos-ssh /home/ /dockerenv/centos7-ssh/</code></pre><p>3.创建jdk</p><pre><code>docker build -t jdk8 /home/ /dockerenv/jdk8u171/</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot</title>
       <link href="/2020/06/27/SpringBoot/"/>
       <url>/2020/06/27/SpringBoot/</url>

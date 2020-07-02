@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Xiao ocean</title>
+  <title>Archives: 2020/7 | Xiao ocean</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Xiao ocean">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2020/07/index.html">
 <meta property="og:site_name" content="Xiao ocean">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Xiao ocean">
@@ -147,288 +147,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Linux安装Docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/">Linux安装Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/" class="archive-article-date">
   	<time datetime="2020-07-02T00:52:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Linux配置Docker"><a href="#Linux配置Docker" class="headerlink" title="Linux配置Docker"></a>Linux配置Docker</h1><p>1.切换到root用户,更新软件安装源,安装完成重启虚拟机</p>
-<pre><code>yum update</code></pre><p>2.查看自带的JAVA,删除自带的JDK</p>
-<pre><code>rpm -qa|grep java 
-yum remove</code></pre>
-        
-          <a class="article-more-a" href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/SpringBoot/">SpringBoot</a>
+      <a class="archive-article-title" href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/">Linux安装Docker</a>
     </h1>
   
 
-        
-        <a href="/2020/06/27/SpringBoot/" class="archive-article-date">
-  	<time datetime="2020-06-27T12:06:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><h2 id="SpringBoot概述"><a href="#SpringBoot概述" class="headerlink" title="SpringBoot概述"></a>SpringBoot概述</h2><h4 id="什么是SpringBoot"><a href="#什么是SpringBoot" class="headerlink" title="什么是SpringBoot"></a>什么是SpringBoot</h4><p>谈到SpringBoot，首先谈一下Spring。Spring框架为Java应用程序开发提供全面基础架构支持的框架，<br>它简化了大量的重复代码的操作，比如数据库连接，让我们的开发时间大大缩短。它的主要模块如下 :</p>
-<pre><code>    Spring JDBC：简化JDBC编码，使代码更加健壮
-    Spring MVC：提供对Web程序的支持
-    Spring Security：提供对安全访问控制的支持 shiro
-    Spring AOP：基础IOC/DI，提供面向切面编程的实现
-    Spring ORM：提供对当前市面上流行的ORM框架的支持
-    Spring Test：提供对单元测试、集成测试等的支持</code></pre><p>随着动态语言的流行（Ruby、Node.js），java开发显得格外笨重，繁多的配置、低下的开发效率、复<br>杂的部署流程以及第三方技术集成的难度大。<br>在上述情况下，SpringBoot应运而生，它使用“习惯优于配置”，使我们不用或很少的配置。</p>
-<hr>
-        
-          <a class="article-more-a" href="/2020/06/27/SpringBoot/#more">more >></a>
-        
-      
+        <div class="article-info info-on-right">
+          
+          
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/27/SpringBoot/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-ELK-Kafka" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/25/ELK-Kafka/">ELK+Kafka</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/25/ELK-Kafka/" class="archive-article-date">
-  	<time datetime="2020-06-25T03:40:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ELK-Kafka"><a href="#ELK-Kafka" class="headerlink" title="ELK+Kafka"></a>ELK+Kafka</h1><h3 id="利用ELK-Kafka解决方案，搭建企业级实时日志分析平台"><a href="#利用ELK-Kafka解决方案，搭建企业级实时日志分析平台" class="headerlink" title="利用ELK+Kafka解决方案，搭建企业级实时日志分析平台"></a>利用ELK+Kafka解决方案，搭建企业级实时日志分析平台</h3><blockquote>
-<p>ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。</p>
-</blockquote>
-<hr>
-        
-          <a class="article-more-a" href="/2020/06/25/ELK-Kafka/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/25/ELK-Kafka/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ActivedMQ的简单应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">ActivedMQ的简单应用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-06-24T09:53:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h1><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><blockquote>
-<p>消息队列是在消息的传播过程中保存消息的容器<br><br><br><br>　<br>消息队列中间件是分布式系统中的重要组件,主要解决异步消息,应用解耦,流量削峰等问题,从而实现高性能,高可用,可伸缩和最终一致性的架构</p>
-</blockquote>
-<ul>
-<li>异步请求</li>
-<li>应用解耦</li>
-<li>流量削峰</li>
-</ul>
-<hr>
-        
-          <a class="article-more-a" href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -450,9 +209,9 @@ yum remove</code></pre>
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
