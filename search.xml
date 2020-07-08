@@ -11,6 +11,18 @@
         <content type="html"><![CDATA[<h1 id="Linux配置Docker"><a href="#Linux配置Docker" class="headerlink" title="Linux配置Docker"></a>Linux配置Docker</h1><p>1.切换到root用户,更新软件安装源,安装完成重启虚拟机</p><pre><code>yum update</code></pre><p>2.查看自带的JAVA,删除自带的JDK</p><pre><code>rpm -qa|grep java yum remove</code></pre><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p>1.关闭,禁用防火墙</p><pre><code>systemctl stop firewalldsystemctl disable firewalld</code></pre><p>2.移除自带的docker</p><pre><code>yum -y remove docker-common container-selinux</code></pre><p>3.更新yum源</p><pre><code>yum install -y yum-utils</code></pre><p>4.配置docker安装源的路径</p><pre><code>yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre><p>5.设置缓冲区</p><pre><code>yum makecache fast</code></pre><p>6.安装</p><pre><code>yum -y install docker-ce</code></pre><p>7.安装完成查看版本</p><pre><code>docker version</code></pre><p>  出现</p><p>  <img src="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/wenti.jpg" alt="wenti"></p><p>  执行</p><pre><code>systemctl daemon-reloadsystemctl restart docker.service</code></pre><h4 id="创建Docker可视化容器"><a href="#创建Docker可视化容器" class="headerlink" title="创建Docker可视化容器"></a>创建Docker可视化容器</h4><p>1.拉取镜像</p><pre><code>docker pull portainer/portainer</code></pre><p>2.创建挂载卷</p><pre><code>docker volume create portainer_data</code></pre><p>3.创建容器</p><pre><code>docker run -it -d -p 9010:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data --restart=always --name portainer portainer/portainer</code></pre><h4 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h4><blockquote><p>在/home/ /创建一个文件夹放dockerFile文件</p></blockquote><p>1.拉取底层镜像centos:7.2.1511</p><pre><code>docker pull centos:7.2.1511</code></pre><p>2.dockerFile安装centos-ssh镜像<br>    centos-ssh文件上传到服务器安装</p><pre><code>docker bulid -t centos-ssh /home/ /dockerenv/centos7-ssh/</code></pre><p>3.创建jdk</p><pre><code>docker build -t jdk8 /home/ /dockerenv/jdk8u171/</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
       
     </entry>
     
@@ -24,6 +36,18 @@
         <content type="html"><![CDATA[<h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><h2 id="SpringBoot概述"><a href="#SpringBoot概述" class="headerlink" title="SpringBoot概述"></a>SpringBoot概述</h2><h4 id="什么是SpringBoot"><a href="#什么是SpringBoot" class="headerlink" title="什么是SpringBoot"></a>什么是SpringBoot</h4><p>谈到SpringBoot，首先谈一下Spring。Spring框架为Java应用程序开发提供全面基础架构支持的框架，<br>它简化了大量的重复代码的操作，比如数据库连接，让我们的开发时间大大缩短。它的主要模块如下 :</p><pre><code>    Spring JDBC：简化JDBC编码，使代码更加健壮    Spring MVC：提供对Web程序的支持    Spring Security：提供对安全访问控制的支持 shiro    Spring AOP：基础IOC/DI，提供面向切面编程的实现    Spring ORM：提供对当前市面上流行的ORM框架的支持    Spring Test：提供对单元测试、集成测试等的支持</code></pre><p>随着动态语言的流行（Ruby、Node.js），java开发显得格外笨重，繁多的配置、低下的开发效率、复<br>杂的部署流程以及第三方技术集成的难度大。<br>在上述情况下，SpringBoot应运而生，它使用“习惯优于配置”，使我们不用或很少的配置。</p><hr><h2 id="SpringBoot核心功能"><a href="#SpringBoot核心功能" class="headerlink" title="SpringBoot核心功能"></a>SpringBoot核心功能</h2><p>1.内嵌的Servlet容器</p><p> &nbsp;&nbsp;&nbsp;&nbsp;SpringBoot可以内嵌Tomcat、Jetty等，这样我们无需以war形式部署项目</p><p>2.提供starer简化Maven配置</p><p>&nbsp;&nbsp;&nbsp;&nbsp; Spring提供了一系列的starer pom 来简化Maven的依赖加载，常用starer依赖：</p><pre><code>    spring-boot-starter-data-jpa    spring-boot-starter-security    spring-boot-starter-test    spring-boot-starter-web    spring-boot-starter-thymeleaf</code></pre><hr><h2 id="SpringBoot项目快速搭建"><a href="#SpringBoot项目快速搭建" class="headerlink" title="SpringBoot项目快速搭建"></a>SpringBoot项目快速搭建</h2><p>1.网站搭建</p><p>&nbsp;&nbsp;<a href="https://start.spring.io/" target="_blank" rel="noopener">浏览器访问</a>，填写Group、artifact、dependencies，点击创建按钮。</p><p><img src="/2020/06/27/SpringBoot/springboot.png" alt="springboot"></p><p>2.使用Spring Tool Suite(STS)<br>即eclipse工具安装SpringBoot插件，创建项目</p><p>3.使用Intellij IDEA工具创建项目<br>第二和第三种创建方式，本质还是访问<a href="https://start.spring.io/创建项目，所以需要有网络" target="_blank" rel="noopener">https://start.spring.io/创建项目，所以需要有网络</a></p><hr><h2 id="SpringBoot基本配置"><a href="#SpringBoot基本配置" class="headerlink" title="SpringBoot基本配置"></a>SpringBoot基本配置</h2><h4 id="SpringBoot的配置文件"><a href="#SpringBoot的配置文件" class="headerlink" title="SpringBoot的配置文件"></a>SpringBoot的配置文件</h4><blockquote><p>全局配置文件：application.properties或application.yml</p></blockquote><pre><code>    常用简单配置：        server.port= 8080        server.context-path= /helloboot        自定义属性配置：        属性定义            book.author= xm            book.name= SpringBoot        属性使用            @Value(“${book.author}”)            String bookAuthor;            @Value(“${book.name}”)            String bookName;</code></pre><h2 id="SpringBoot的常用注解"><a href="#SpringBoot的常用注解" class="headerlink" title="SpringBoot的常用注解"></a>SpringBoot的常用注解</h2><pre><code>类注解    @RestController，等同于@Controller + @responseBodyurl注解    @RequestMapping参数注解    @GetMapping组合注解（get请求方式的RequestMapping）    @PostMapping组合注解（post请求方式的RequestMapping）    @PathVariable 获取url中的数据    @RequestParam 获取参数中的数据</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -37,6 +61,18 @@
         <content type="html"><![CDATA[<h1 id="ELK-Kafka"><a href="#ELK-Kafka" class="headerlink" title="ELK+Kafka"></a>ELK+Kafka</h1><h3 id="利用ELK-Kafka解决方案，搭建企业级实时日志分析平台"><a href="#利用ELK-Kafka解决方案，搭建企业级实时日志分析平台" class="headerlink" title="利用ELK+Kafka解决方案，搭建企业级实时日志分析平台"></a>利用ELK+Kafka解决方案，搭建企业级实时日志分析平台</h3><blockquote><p>ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。</p></blockquote><hr><h4 id="准备DockerFile文件"><a href="#准备DockerFile文件" class="headerlink" title="准备DockerFile文件"></a>准备DockerFile文件</h4><p>1.修改ElasticSearch的DockerFile依赖的JDK镜像名</p><pre><code>    FROM jdk镜像名</code></pre><p>2.修改Kafka的DockerFile依赖的JDK镜像名,倒数第二行添加</p><pre><code>    FROM jdk镜像名</code></pre><pre><code>    EXPOSE 9092</code></pre><p>3.修改Kafka的Service.properties文件,改为你的虚拟机地址</p><pre><code>    advertised.listeners=PLAINTEXT://192.168.71.132:9092    zookeeper.connect=192.168.71.132:2181   </code></pre><p>4.修改Kibana的DockerFile依赖的JDK镜像名</p><pre><code>    FROM jdk镜像名</code></pre><p>5.修改Kibana.yml文件,改为你的虚拟机地址</p><pre><code>    elasticsearch.url: &quot;http://192.168.71.132:9200&quot;</code></pre><p>6.修改Kibana的DockerFile依赖的JDK镜像名</p><pre><code>    FROM jdk镜像名</code></pre><p>7.把logstash.conf文件中所有的IP地址改为你的</p><p>8.logstash.yml文件,IP地址</p><pre><code>    xpack.monitoring.elasticsearch.url: http://192.168.71.132:9200</code></pre><p>9.把ELK+Kafka文件夹拉入服务器</p><p>10.安装ElasticSearch镜像,创建容器</p><pre><code>    //执行DockerFile    docker build -t elasticsearch /home/kds/dockermv/Elasticsearch/    //创建容器    docker run -it -d -p 9200:9200 --name elasticsearch elasticsearch</code></pre><p>11.创建Kibana镜像,创建容器</p><pre><code>    //创建镜像    docker build -t kibana /home/kds/dockermv/Kibana/    //创建容器    docker run -it -d -p 5601:5601 --name kibana kibana</code></pre><p>12.创建Kafka镜像,创建容器</p><pre><code>    //创建镜像    docker build -t kafka /home/kds/dockermv/Kafka/    //创建容器    docker run -it -d -p 9092:9092 --name kafka kafka</code></pre><p>13.创建logstash</p><pre><code>    //创建镜像    docker build -t logstash /home/kds/dockermv/Logstash/    //创建容器    docker run -it -d logstash logstash</code></pre><hr><h3 id="ElasticSearch启动不成功"><a href="#ElasticSearch启动不成功" class="headerlink" title="ElasticSearch启动不成功"></a>ElasticSearch启动不成功</h3><ul><li><p>先限制性</p><pre><code>  sysctl -w vm.max_map_count=262144</code></pre></li><li><p>重启docker服务</p><pre><code>  systemctl  restart docker</code></pre></li><li><p>启动ElasticSearch容器</p></li></ul><h4 id="启动容器的步骤"><a href="#启动容器的步骤" class="headerlink" title="启动容器的步骤"></a>启动容器的步骤</h4><ul><li>先启动ElasticSearch</li><li></li><li>再启动Kibana</li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
       
     </entry>
     
@@ -50,6 +86,18 @@
         <content type="html"><![CDATA[<h1 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h1><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><blockquote><p>消息队列是在消息的传播过程中保存消息的容器<br><br><br><br>　<br>消息队列中间件是分布式系统中的重要组件,主要解决异步消息,应用解耦,流量削峰等问题,从而实现高性能,高可用,可伸缩和最终一致性的架构</p></blockquote><ul><li>异步请求</li><li>应用解耦</li><li>流量削峰</li></ul><hr><blockquote><p>Docker环境搭建</p></blockquote><p>通过Docker文件进行创建生成镜像文件<br></p><pre><code>docker build -t activemq/home/kds/dockermv/activeMQ5.15.2/</code></pre><p>创建容器<br></p><pre><code>docker run -it -d -p 8161:8161 -p 61616:61616 --name activemq activemq8161:HTTP协议61616:TCP协议</code></pre><hr><h3 id="ActiveMQ的简单应用"><a href="#ActiveMQ的简单应用" class="headerlink" title="ActiveMQ的简单应用"></a>ActiveMQ的简单应用</h3><a id="more"></a><p>1.创建发送者produce</p><p>2.导入SpringBoot整合ActiveMQ依赖</p><pre><code>&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;    &lt;artifactId&gt;spring-boot-starter-activemq&lt;/artifactId&gt;&lt;/dependency&gt;</code></pre><p>3.向yml文件中添加属性</p><pre><code>    spring:        activemq:            broker-url: tcp://192.168.71.131:61616            in-memory: true            pool:                enabled: false            packages:                trust-all: true</code></pre><p>4.创建controller</p><pre><code>@Resourceprivate JmsMessagingTemplate jmsMessagingTemplatel;@RequestMapping(&quot;/send&quot;)public String send(String message){    //创建队列的名称    Queue queue = new ActiveMQQueue(&quot;消息队列1&quot;);    //将消息发送到服务器中    jmsMessagingTemplatel.convertAndSend(queue,message);    return &quot;发送成功&quot;;}</code></pre><p>5.启动类添加注解,运行访问</p><pre><code>@EnableJms</code></pre><p>6.创建消费者Consumer,修改yml文件</p><pre><code>spring:    activemq:        broker-url: tcp://192.168.71.131:61616        in-memory: true        pool:            enabled: false        packages:            trust-all: trueserver:    port: 6666</code></pre><p>7.添加测试类</p><pre><code>@Componentpublic class Test {    @JmsListener(destination = &quot;消息队列2&quot;)    public void getMessage(String message){        System.out.println(message);    }}</code></pre><p>8.启动类添加注解,启动</p><pre><code>@EnableJms</code></pre><hr><h3 id="ActiveMQ参数信息"><a href="#ActiveMQ参数信息" class="headerlink" title="ActiveMQ参数信息"></a>ActiveMQ参数信息</h3><ul><li>Number Of Pending Messages     等待处理的消息有多少条</li><li>Number Of Consumers    有多少个消费者去处理消息</li><li>Messages Enqueued    进入队列的中的消息有多少条</li><li>Messages Dequeued    已处理的消息有多少条</li></ul><hr><h4 id="JMS消息模型P2P-Point-to-Point-点对点模式"><a href="#JMS消息模型P2P-Point-to-Point-点对点模式" class="headerlink" title="JMS消息模型P2P(Point to Point)点对点模式"></a>JMS消息模型P2P(Point to Point)点对点模式</h4><p>P2P模式包含三个角色:<br><br>   &nbsp; &nbsp;&nbsp;  消息队列(Queue),发送者(Sender),接收者(Receiver)</p><pre><code>Queue queue = new ActiveMQQueue(&quot;消息队列1&quot;);</code></pre><ul><li>每个消息只有一个消费者(Consumer)</li><li>发送者和接收者之间在时间上没有依赖性,也就是说当发送者发送了消息之后,不管接收者有没有正在运行,它不会影响到消息被发送到队列</li><li>接收者在成功接收消息之后需要想队列应答成功</li></ul><hr><h4 id="Publish-Subscribe-Pub-Sub-发布订阅模式"><a href="#Publish-Subscribe-Pub-Sub-发布订阅模式" class="headerlink" title="Publish/Subscribe(Pub/Sub)发布订阅模式"></a>Publish/Subscribe(Pub/Sub)发布订阅模式</h4><p>Pbu/Sub模式包含三个角色:<br><br>    &nbsp; &nbsp;&nbsp;<br>    主题(Topic),发布者(Publisher),订阅者(Receiver)</p><pre><code>Topic topic = new ActiveMQTopic(&quot;订阅队列&quot;);//配置消息中间件的模式  false 点对点模式   true 发布订阅模式//发布者消费者需要配置jms:     pub-sub-domain: true</code></pre><ul><li>每个消息可以有多个消费者</li><li>发布者和订阅者之间有时间上的依赖性.针对某个主题的订阅者,他必须创建一个订阅之后,才能消费发布者的消息</li><li>为了消费消息,订阅者必须保持运行的状态</li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+        </tags>
       
     </entry>
     
