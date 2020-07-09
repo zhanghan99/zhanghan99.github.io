@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ELK+Kafka, Xiao ocean">
+    <meta name="keywords" content="Java反射机制, Xiao ocean">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ELK+Kafka | Xiao ocean</title>
+    <title>Java反射机制 | Xiao ocean</title>
     <link rel="icon" type="image/png" href="/assets/sssss.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -278,12 +278,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ELK+Kafka</h1>
+                    <h1 class="description center-align post-title">Java反射机制</h1>
                 </div>
             </div>
         </div>
@@ -400,8 +400,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker/">
-                                <span class="chip bg-color">Docker</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -412,8 +412,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -425,7 +425,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-25
+                    2020-07-09
                 </div>
                 
 
@@ -441,51 +441,175 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ELK-Kafka"><a href="#ELK-Kafka" class="headerlink" title="ELK+Kafka"></a>ELK+Kafka</h1><h3 id="利用ELK-Kafka解决方案，搭建企业级实时日志分析平台"><a href="#利用ELK-Kafka解决方案，搭建企业级实时日志分析平台" class="headerlink" title="利用ELK+Kafka解决方案，搭建企业级实时日志分析平台"></a>利用ELK+Kafka解决方案，搭建企业级实时日志分析平台</h3><blockquote>
-<p>ELK 是三款软件的组合。是一整套完整的解决方案。分别是由 Logstash（收集+分析）、ElasticSearch（搜索+存储）、Kibana（可视化展示）三款软件。ELK主要是为了在海量的日志系统里面实现分布式日志数据集中式管理和查询，便于监控以及排查故障。</p>
-</blockquote>
-<hr>
-<h4 id="准备DockerFile文件"><a href="#准备DockerFile文件" class="headerlink" title="准备DockerFile文件"></a>准备DockerFile文件</h4><p>1.修改ElasticSearch的DockerFile依赖的JDK镜像名</p>
-<pre><code>    FROM jdk镜像名</code></pre><p>2.修改Kafka的DockerFile依赖的JDK镜像名,倒数第二行添加</p>
-<pre><code>    FROM jdk镜像名</code></pre><pre><code>    EXPOSE 9092</code></pre><p>3.修改Kafka的Service.properties文件,改为你的虚拟机地址</p>
-<pre><code>    advertised.listeners=PLAINTEXT://192.168.71.132:9092
-    zookeeper.connect=192.168.71.132:2181   </code></pre><p>4.修改Kibana的DockerFile依赖的JDK镜像名</p>
-<pre><code>    FROM jdk镜像名</code></pre><p>5.修改Kibana.yml文件,改为你的虚拟机地址</p>
-<pre><code>    elasticsearch.url: &quot;http://192.168.71.132:9200&quot;</code></pre><p>6.修改Kibana的DockerFile依赖的JDK镜像名</p>
-<pre><code>    FROM jdk镜像名</code></pre><p>7.把logstash.conf文件中所有的IP地址改为你的</p>
-<p>8.logstash.yml文件,IP地址</p>
-<pre><code>    xpack.monitoring.elasticsearch.url: http://192.168.71.132:9200</code></pre><p>9.把ELK+Kafka文件夹拉入服务器</p>
-<p>10.安装ElasticSearch镜像,创建容器</p>
-<pre><code>    //执行DockerFile
-    docker build -t elasticsearch /home/kds/dockermv/Elasticsearch/
-    //创建容器
-    docker run -it -d -p 9200:9200 --name elasticsearch elasticsearch</code></pre><p>11.创建Kibana镜像,创建容器</p>
-<pre><code>    //创建镜像
-    docker build -t kibana /home/kds/dockermv/Kibana/
-    //创建容器
-    docker run -it -d -p 5601:5601 --name kibana kibana</code></pre><p>12.创建Kafka镜像,创建容器</p>
-<pre><code>    //创建镜像
-    docker build -t kafka /home/kds/dockermv/Kafka/
-    //创建容器
-    docker run -it -d -p 9092:9092 --name kafka kafka</code></pre><p>13.创建logstash</p>
-<pre><code>    //创建镜像
-    docker build -t logstash /home/kds/dockermv/Logstash/
-    //创建容器
-    docker run -it -d logstash logstash</code></pre><hr>
-<h3 id="ElasticSearch启动不成功"><a href="#ElasticSearch启动不成功" class="headerlink" title="ElasticSearch启动不成功"></a>ElasticSearch启动不成功</h3><ul>
-<li><p>先限制性</p>
-<pre><code>  sysctl -w vm.max_map_count=262144</code></pre></li>
-<li><p>重启docker服务</p>
-<pre><code>  systemctl  restart docker</code></pre></li>
-<li><p>启动ElasticSearch容器</p>
-</li>
-</ul>
-<h4 id="启动容器的步骤"><a href="#启动容器的步骤" class="headerlink" title="启动容器的步骤"></a>启动容器的步骤</h4><ul>
-<li>先启动ElasticSearch</li>
-<li></li>
-<li>再启动Kibana</li>
-</ul>
+                <h1 id="Java反射机制"><a href="#Java反射机制" class="headerlink" title="Java反射机制"></a>Java反射机制</h1><h2 id="什么是反射机制"><a href="#什么是反射机制" class="headerlink" title="什么是反射机制"></a>什么是反射机制</h2><pre><code>想要了解反射机制，需要先了解两个概念：编译期和运行期。
 
+编译期：把源代码翻译成机器能识别的代码，比如编译器把java代码编译成jvm识别的字节码文件
+
+运行期：将可执行文件交给操作系统去执行
+
+反射机制：在运行期，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的
+反射机制。</code></pre><p><strong>（简述：java中，只要给定类的名字，就可以在运行时通过反射机制来获得类的所有信息）</strong></p>
+<h2 id="反射机制的作用"><a href="#反射机制的作用" class="headerlink" title="反射机制的作用"></a>反射机制的作用</h2><ul>
+<li>运行时判断对象所属的类</li>
+<li>运行时构造一个类的对象</li>
+<li>运行时，判断一个类所具有的的成员变量和方法</li>
+<li>运行时调用任意一个对象的方法</li>
+</ul>
+<p><strong>使用场景</strong></p>
+<p>1.反编译(.class变成.java)</p>
+<p>2.开发框架,反射是框架设计的灵魂。比如Spring，为了保证框架的通用性，框架需要根据配置文件<br>加载不同的类或对象（运行期间，动态加载所需对象）。</p>
+<p><strong>优缺点</strong></p>
+<p>对象的创建，分为静态和动态两种。<strong>静态</strong>：编译时即确定具体类型，绑定对象。动态：运行时才会<br>确定具体类型，能够有效降低类之间的耦合度，最大限度发挥了java的灵活性。</p>
+<p><strong>反射机制优点</strong>：实现对象的动态创建和编译，体现了很大的灵活性。比如：一个大型软件，不可能<br>一次就设计的很完美，当需要增加新功能时，如何解决？卸载以后重新安装新版本？这是不合适的。静<br>态编译则必须这样做，而反射机制的动态特性可以帮助我们解决这个问题，无需卸载，只需要运行时动<br>态的加载，即可创建和编译新对象。</p>
+<p><strong>缺点</strong>：对系统性能会产生影响。</p>
+<h2 id="反射机制的实现"><a href="#反射机制的实现" class="headerlink" title="反射机制的实现"></a>反射机制的实现</h2><blockquote>
+<p>java中，使用一个类需要把该类加载到虚拟机中，并生成一个Class对象，这个对象保存了该类<br>的所有信息。反射机制的实现，就是获取这个Class对象。</p>
+</blockquote>
+<p><strong>class对象的获取</strong></p>
+<p>  第一种：（已存在对象，无需反射）</p>
+<pre><code>Student stu1 = new Student();//这一new 产生一个Student对象，一个Class对象。
+Class stuClass = stu1.getClass();//获取Class对象
+System.out.println(stuClass.getName())</code></pre><p>  第二种：（需要导入类包，依赖太强）</p>
+<pre><code>Class stuClass2 = Student.class;
+//判断第一种方式获取的Class对象和第二种方式获取的是否是同一个
+System.out.println(stuClass == stuClass2);</code></pre><p>  第三种：（常用，传入一个字符串即可，或者写在配置文件中）</p>
+<pre><code>//注意此字符串必须是真实路径，就是带包名的类路径，包名.类名
+Class stuClass3 = Class.forName(&quot;cn.bdqn.Student&quot;);
+//判断三种方式是否获取的是同一个Class对象
+System.out.println(stuClass3 == stuClass2);</code></pre><p>  反射机制常用的类</p>
+<pre><code>Java.lang.Class; //类
+Java.lang.reflect.Constructor; //构造方法
+Java.lang.reflect.Field; //属性
+Java.lang.reflect.Method; //方法</code></pre><h2 id="反射机制的使用"><a href="#反射机制的使用" class="headerlink" title="反射机制的使用"></a>反射机制的使用</h2><h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><blockquote>
+<p>使用反射机制创建对象有两种方式：newInstance()方法和Constructor对象</p>
+</blockquote>
+<p>1.使用Class对象的newInstance()方法创建对象</p>
+<pre><code>Class&lt;?&gt; c = Class.forName(&quot;cn.bdqn.Student&quot;);
+Object str = c.newInstance();</code></pre><p>2.调用Constructor对象</p>
+<pre><code>/获取String的Class对象
+Class&lt;?&gt; c = Class.forName(&quot;cn.bdqn.Student&quot;);
+//通过Class对象获取指定的Constructor构造器对象
+Constructor constructor=c.getConstructor(String.class);
+//根据构造器创建实例：
+Object obj = constructor.newInstance(“hello reflection”);   </code></pre><h3 id="获取构造方法"><a href="#获取构造方法" class="headerlink" title="获取构造方法"></a>获取构造方法</h3><p><strong>获取构造方法</strong></p>
+<pre><code>//所有&quot;公有的&quot;构造方法
+public Constructor[] getConstructors()
+//获取所有的构造方法(包括私有、受保护、默认、公有）
+public Constructor[] getDeclaredConstructors()
+//获取单个的&quot;公有的&quot;构造方法
+public Constructor getConstructor(Class... parameterTypes)
+//获取&quot;某个构造方法&quot;可以是私有的，或受保护、默认、公有
+public Constructor getDeclaredConstructor(Class... parameterTypes)</code></pre><p><strong>调用构造方法</strong></p>
+<pre><code>//对象获取构造的方法getConstructor
+newInstance(Object... initargs)</code></pre><p>示例:</p>
+<pre><code>//1.加载Class对象
+Class clazz = Class.forName(&quot;cn.bdqn.Student&quot;);
+//2. 获取构造方法
+******获取所有公有构造方法******
+System.out.println(&quot;***所有公有构造方***&quot;);
+Constructor[] conArray = clazz.getConstructors();
+for(Constructor c : conArray){
+System.out.println(c);
+}
+******获取所有构造方法******
+System.out.println(&quot;***所有的构造方法(包括：私有、受保护、默认、公有)***&quot;);
+conArray = clazz.getDeclaredConstructors();
+for(Constructor c : conArray){
+System.out.println(c);
+}
+****** 获取公有、无参的构造方法******
+System.out.println(&quot;***获取公有、无参的构造方法***&quot;);
+Constructor constructor = clazz.getConstructor(null);
+//1&gt;、因为是无参的构造方法所以类型是一个null,不写也可以：这里需要的是一个参数的类型，切记是
+类型
+//2&gt;、返回的是描述这个无参构造函数的类对象。
+System.out.println(&quot;con = &quot; + con);
+//3.对象创建
+******调用无参构造创建对象******
+Object newInstance = constructor.newInstance();
+******调用有参构造创建对象******
+Constructor constructor = clazz.getConstructor(String.class);//参数用以指定类型
+constructor.newInstance(new Object[]{&quot;xm&quot;});//参数用以赋值</code></pre><h3 id="获取成员变量并调用"><a href="#获取成员变量并调用" class="headerlink" title="获取成员变量并调用"></a>获取成员变量并调用</h3><p><strong>获取成员变量</strong></p>
+<pre><code>//批量获取
+******获取所有的&quot;公有字段******
+Field[] getFields()
+******获取所有字段，包括：私有、受保护、默认、公有******
+Field[] getDeclaredFields()
+//单个获取
+******获取某个&quot;公有的&quot;字段******
+public Field getField(String fieldName)
+******获取某个字段(可以是私有的)******
+public Field getDeclaredField(String fieldName)</code></pre><p>示例:</p>
+<pre><code>Class clazz = Class.forName(&quot;cn.bdqn.Student&quot;);
+Object obj = clazz.getConstructor().newInstance();
+System.out.println(&quot;************获取所有公有的字段********************&quot;);
+Field[] fieldArray = clazz.getFields();
+System.out.println(&quot;************获取所有的字段(包括私有、受保护、默认
+的)********************&quot;);
+fieldArray = clazz.getDeclaredFields();
+System.out.println(&quot;******获取公有字段并调用******&quot;);
+Field f = clazz.getField(&quot;name&quot;);
+//为字段设置值,为Student对象中的name属性赋值--》stu.name = &quot;刘德华&quot;
+f.set(obj, &quot;刘德华&quot;);
+//验证
+Student stu = (Student)obj;
+System.out.println(&quot;验证姓名：&quot; + stu.name);
+System.out.println(&quot;******获取私有字段并调用******&quot;);
+f = clazz.getDeclaredField(&quot;phoneNum&quot;);
+System.out.println(f);
+f.setAccessible(true);//暴力反射，解除私有限定
+f.set(obj, &quot;18888889999&quot;);
+System.out.println(&quot;验证电话：&quot; + stu);</code></pre><h3 id="获取成员方法并调用"><a href="#获取成员方法并调用" class="headerlink" title="获取成员方法并调用"></a>获取成员方法并调用</h3><p><strong>获取成员方法</strong></p>
+<pre><code>//批量的
+public Method[] getMethods():获取所有&quot;公有方法&quot;；（包含了父类的方法也包含Object类）
+public Method[] getDeclaredMethods():获取所有的成员方法，包括私有的(不包括继承的)
+//获取单个
+public Method getMethod(String name,Class&lt;?&gt;... parameterTypes):
+public Method getDeclaredMethod(String name,Class&lt;?&gt;... parameterTypes)
+参数说明：
+* name : 方法名；
+* Class ... : 形参的Class类型对象</code></pre><p>调用方法</p>
+<pre><code>public Object invoke(Object obj,Object... args):
+参数说明：
+* obj : 要调用方法的对象；
+* args:调用方式时所传递的实参；</code></pre><p>示例</p>
+<pre><code>Class clazz = Class.forName(&quot;cn.bdqn.Student&quot;);
+Object obj = clazz.getConstructor().newInstance();
+//2.获取所有公有方法
+System.out.println(&quot;***************获取所有的”公有“方法*******************&quot;);
+Method[] methodArray = clazz.getMethods();
+System.out.println(&quot;***************获取所有的方法，包括私有的*******************&quot;);
+Method[] methodArray = clazz.getDeclaredMethods();
+System.out.println(&quot;***************获取公有的show1()方法*******************&quot;);
+Method m = stuClass.getMethod(&quot;show1&quot;, String.class);
+//实例化一个Student对象
+Object obj = stuClass.getConstructor().newInstance();
+m.invoke(obj, &quot;刘德华&quot;);
+System.out.println(&quot;***************获取私有的show4()方法******************&quot;);
+m = stuClass.getDeclaredMethod(&quot;show4&quot;, int.class);
+m.setAccessible(true);//解除私有限定
+Object result = m.invoke(obj, 20);
+System.out.println(&quot;返回值：&quot; + result);</code></pre><h3 id="通过反射机制运行配置内容"><a href="#通过反射机制运行配置内容" class="headerlink" title="通过反射机制运行配置内容"></a>通过反射机制运行配置内容</h3><p>配置文件pro.txt</p>
+<pre><code>className=cn.bdqn.Student
+methodName=show</code></pre><p>测试类</p>
+<pre><code>public class Demo {
+public static void main(String[] args) throws Exception {
+//通过反射获取Class对象
+    Class stuClass = Class.forName(getValue(&quot;className&quot;));//cn.bdqn.Student
+    //2获取show()方法
+    Method m = stuClass.getMethod(getValue(&quot;methodName&quot;));//show
+    //3.调用show()方法
+    m.invoke(stuClass.getConstructor().newInstance());
+}
+//此方法接收一个key，在配置文件中获取相应的value
+public static String getValue(String key) throws IOException{
+    Properties pro = new Properties();//获取配置文件的对象
+    FileReader in = new FileReader(&quot;pro.txt&quot;);//获取输入流
+    pro.load(in);//将流加载到配置文件对象中
+    in.close();
+    return pro.getProperty(key);//返回根据key获取的value值
+    }
+}</code></pre>
             </div>
             <hr/>
 
@@ -510,7 +634,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/25/ELK-Kafka/">http://yoursite.com/2020/06/25/ELK-Kafka/</a>
+                    <a href="http://yoursite.com/2020/07/09/Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">http://yoursite.com/2020/07/09/Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -548,8 +672,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Docker/">
-                                    <span class="chip bg-color">Docker</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -594,7 +718,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-06-25T11-40-03',
+        id: '2020-07-09T11-18-21',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -618,7 +742,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Jun 25 2020 11:40:03 GMT+0800',
+    id: 'Thu Jul 09 2020 11:18:21 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -643,9 +767,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2020/06/25/ELK-Kafka/';
-        this.page.identifier = '/2020/06/25/ELK-Kafka/';
-        this.page.title = 'ELK+Kafka';
+        this.page.url = 'http://yoursite.com/2020/07/09/Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/';
+        this.page.identifier = '/2020/07/09/Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/';
+        this.page.title = 'Java反射机制';
     };
     let disqus_shortname = '';
 
@@ -1006,31 +1130,35 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/27/SpringBoot/">
+                <a href="/2020/07/09/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="SpringBoot">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Java8新特性">
                         
-                        <span class="card-title">SpringBoot</span>
+                        <span class="card-title">Java8新特性</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SpringBootSpringBoot概述什么是SpringBoot谈到SpringBoot，首先谈一下Spring。Spring框架为Java应用程序开发提供全面基础架构支持的框架，它简化了大量的重复代码的操作，比如数据库连接，让我们的
+                            Java8新特性1.默认方法：
+    默认方法就是一个在接口里面有了一个实现的方法
+2.方法引用：
+    方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。
+    与lambda联合使用，可以使语言
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-27
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-09
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SpringBoot/" class="post-category">
-                                    SpringBoot
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -1040,8 +1168,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1055,39 +1183,34 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/24/ActivedMQ%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">
+                <a href="/2020/07/02/Linux%E5%AE%89%E8%A3%85Docker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ActivedMQ的简单应用">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux安装Docker">
                         
-                        <span class="card-title">ActivedMQ的简单应用</span>
+                        <span class="card-title">Linux安装Docker</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ActiveMQ应用场景
-消息队列是在消息的传播过程中保存消息的容器　消息队列中间件是分布式系统中的重要组件,主要解决异步消息,应用解耦,流量削峰等问题,从而实现高性能,高可用,可伸缩和最终一致性的架构
-
-
-异步请求
-应用解耦
-流量削峰
-
-
+                            Linux配置Docker1.切换到root用户,更新软件安装源,安装完成重启虚拟机
+yum update2.查看自带的JAVA,删除自带的JDK
+rpm -qa|grep java 
+yum remove安装docker1.关闭,禁用防火
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SpringBoot/" class="post-category">
-                                    SpringBoot
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -1097,12 +1220,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ActiveMQ/">
-                        <span class="chip bg-color">ActiveMQ</span>
-                    </a>
-                    
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
